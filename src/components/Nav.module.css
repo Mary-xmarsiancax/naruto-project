@@ -1,7 +1,12 @@
-.nav{
+.nav {
     grid-area: n;
     background-color: darkmagenta;
 }
-.item{
-color: aliceblue;
+
+.item {
+    color: aliceblue;
+}
+
+.item.active {
+    color: gold;
 }
