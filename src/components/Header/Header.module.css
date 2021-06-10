@@ -1,12 +1,12 @@
 .header{
     grid-area: h;
-    background-color: darkmagenta;
+    background-color: black;
 
 }
 
 .header .imgOne, .header .imgTwo{
     display: inline-block;
-    width: 200px;
+    /*width: 100px;*/
 }
 .header .imgTwo img{
     width: 350px;
