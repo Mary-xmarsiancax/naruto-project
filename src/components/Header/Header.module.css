@@ -8,8 +8,8 @@
     display: inline-block;
     /*width: 100px;*/
 }
-.header .imgTwo img{
-    width: 350px;
+.header .imgTwo img {
+    width: auto;
     padding-left: 80px;
 }
 
