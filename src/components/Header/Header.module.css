@@ -6,11 +6,15 @@
 
 .header .imgOne, .header .imgTwo{
     display: inline-block;
-    /*width: 100px;*/
-}
+   }
+
 .header .imgTwo img {
     width: auto;
-    padding-left: 80px;
+    padding-left: 100px;
+    padding-bottom: 70px;
+}
+.header .imgOne img {
+    height: 290px;
 }
 
 

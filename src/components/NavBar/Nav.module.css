@@ -3,10 +3,12 @@
     background-color: black;
 }
 
-.item {
+.item a {
     color: aliceblue;
+    font-size: 35px;
+    text-decoration: none;
 }
 
-.item.active {
+.item a.activeLink {
     color: gold;
 }
