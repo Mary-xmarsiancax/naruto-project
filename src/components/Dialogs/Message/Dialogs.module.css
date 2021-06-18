@@ -1,0 +1,21 @@
+.Dialogs{
+display: grid;
+    grid-template-columns: 3fr 6fr;
+    font-size: 30px;
+
+    }
+
+.DialogsItem{
+padding: 30px;
+    border-right: 1px solid black;
+}
+
+.Messages{
+    padding: 30px;
+}
+.Dialog{
+
+}
+.Message{
+
+}
