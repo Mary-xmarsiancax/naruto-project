@@ -1,0 +1,8 @@
+.item{
+    color: blue;
+    font-size: 10px;
+    display: inline-block;
+}
+.item img {
+    height: 50px;
+}

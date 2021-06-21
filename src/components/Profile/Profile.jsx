@@ -13,7 +13,7 @@ const Profile = (props) => {
     // ]
     return <div className={s.content}>
         <ProfileInfo/>
-        <MyPosts postData={props.postData} name={'Max'} age={31}/>
+        <MyPosts postData={props.state. newPostData} name={'Max'} age={31}/>
     </div>
 }
 export default Profile;
