@@ -8,11 +8,11 @@ let state = {
     },
     dialogsPage : {
         dialogData: [
-            {id: 1, name: "Max Barochkin", ava:},
-            {id: 2, name: "Serg"},
-            {id: 3, name: "Ann Sokolova"},
-            {id: 4, name: "Nina Zachmatova"},
-            {id: 5, name: "Fred Mercury"},
+            {id: 1, name: "Max Barochkin",ava:"maxAva"},
+            {id: 2, name: "Serg",ava:"sergAva"},
+            {id: 3, name: "Ann Sokolova",ava:"anyaAva"},
+            {id: 4, name: "Nina Zachmatova",ava:"ninaAva"},
+            {id: 5, name: "Fred Mercury",ava:"fredAva"},
         ],
         messages: [
             {id: 1, message: "Hello!"},
