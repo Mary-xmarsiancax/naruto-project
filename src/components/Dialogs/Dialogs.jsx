@@ -12,8 +12,7 @@ const Dialogs = (props) => {
             <div className={s.dFlex}>
                 <img src={dialogLogo} alt="dialogLogo" width='50px' height='50px'/>
                 <Answer key={a.id} answer={a.answer} id={a.id}/>
-
-            </div>
+                            </div>
         </div>
     ));
     let dialogsElements = props.state.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava} id={d.id}/>);
@@ -25,6 +24,19 @@ const Dialogs = (props) => {
             </div>
         </div>));
 
+    let newMessageEl=React.createRef();
+    let addMessage=()=>{
+        let text=newMessageEl.current.value;
+        alert(text);
+    }
+    let newAnswerEl=React.createRef();
+    let addAnswer=()=>{
+        let text=newAnswerEl.current.value;
+        alert("text");
+    }
+
+
+
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItem}>
@@ -32,9 +44,13 @@ const Dialogs = (props) => {
             </div>
             <div className={s.DialogsItem}>
                 {messagesElements}
+                <textarea ref={newMessageEl}></textarea>
+                <button onClick={addMessage}>Add new Message</button>
             </div>
             <div className={s.DialogsItem}>
                 {answerElements}
+                <textarea ref={newAnswerEl} ></textarea>
+                <button onClick={addAnswer}>Add new Answer</button>
             </div>
 
         </div>

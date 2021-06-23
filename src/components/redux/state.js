@@ -1,18 +1,18 @@
 let state = {
     profilePage: {
         newPostData: [
-            {id: 1, message: "Hi!", likesCounte: "17"},
-            {id: 2, message: "How are you?", likesCounte: "20"},
-            {id: 3, message: "I am fine!I am under the water", likesCounte: "23"},
+            {id: 1, message: "Hi!", likesCounte: 17},
+            {id: 2, message: "How are you?", likesCounte: 20},
+            {id: 3, message: "I am fine!I am under the water", likesCounte: 23},
         ],
     },
-    dialogsPage : {
+    dialogsPage: {
         dialogData: [
-            {id: 1, name: "Max Barochkin",ava:"maxAva"},
-            {id: 2, name: "Serg",ava:"sergAva"},
-            {id: 3, name: "Ann Sokolova",ava:"anyaAva"},
-            {id: 4, name: "Nina Zachmatova",ava:"ninaAva"},
-            {id: 5, name: "Fred Mercury",ava:"fredAva"},
+            {id: 1, name: "Max Barochkin", ava: "maxAva"},
+            {id: 2, name: "Serg", ava: "sergAva"},
+            {id: 3, name: "Ann Sokolova", ava: "anyaAva"},
+            {id: 4, name: "Nina Zachmatova", ava: "ninaAva"},
+            {id: 5, name: "Fred Mercury", ava: "fredAva"},
         ],
         messages: [
             {id: 1, message: "Hello!"},
@@ -21,17 +21,17 @@ let state = {
             {id: 4, message: "Hop-hop-hop!"},
             {id: 5, message: "How are you?"},
         ],
-        answers:[
-            {id:1, answer: "Hi!"},
-            {id:2, answer: "Ok!"},
-            {id:3, answer: "Ok!One minute"},
-            {id:5, answer: "Op!Op!op!!"},
-            {id:4, answer: "I am fine!I learn Programming!"},
+        answers: [
+            {id: 1, answer: "Hi!"},
+            {id: 2, answer: "Ok!"},
+            {id: 3, answer: "Ok!One minute"},
+            {id: 5, answer: "Op!Op!op!!"},
+            {id: 4, answer: "I am fine!I learn Programming!"},
 
         ]
     },
     friendsPage: {
-        friends:[
+        friends: [
             {id: 1, friendsName: "Raf"},
             {id: 2, friendsName: "Donny"},
             {id: 3, friendsName: "Micky"},
@@ -39,4 +39,11 @@ let state = {
         ]
     }
 }
+
+export let addPost = (postMessage) => {
+    let newPost = {id: 4, message: postMessage, likesCounte: 55};
+    state.profilePage.newPostData.push(newPost);
+}
+
+
 export default state;
