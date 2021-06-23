@@ -20,6 +20,14 @@ let state = {
             {id: 3, message: "Please call me!"},
             {id: 4, message: "Hop-hop-hop!"},
             {id: 5, message: "How are you?"},
+        ],
+        answers:[
+            {id:1, answer: "Hi!"},
+            {id:2, answer: "Ok!"},
+            {id:3, answer: "Ok!One minute"},
+            {id:5, answer: "Op!Op!op!!"},
+            {id:4, answer: "I am fine!I learn Programming!"},
+
         ]
     },
     friendsPage: {

@@ -2,28 +2,41 @@ import React from 'react';
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import dialogLogo from "../../images/dialogsLogo.png";
+import Answer from "./Answers/Answer";
 
 
 const Dialogs = (props) => {
-    let DialogsElements = props.state.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava} id={d.id}/>);
-    let MessagesElements = props.state.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>);
-    // let Messages = [
-    //     {id: 1, message: "Hello!"},
-    //     {id: 2, message: "Go to walk!!"},
-    //     {id: 3, message: "Please call me!"},
-    //     {id: 4, message: "Hop-hop-hop!"},
-    //     {id: 5, message: "How are you?"},
-    // ]
+    let answerElements = props.state.answers.map(a => (
+        <div key={a.id} >
+            <div className={s.dFlex}>
+                <img src={dialogLogo} alt="dialogLogo" width='50px' height='50px'/>
+                <Answer key={a.id} answer={a.answer} id={a.id}/>
 
+            </div>
+        </div>
+    ));
+    let dialogsElements = props.state.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava} id={d.id}/>);
+    let messagesElements = props.state.messages.map(m => (
+        <div key={m.id}>
+            <div className={s.dFlex}>
+                <img src={dialogLogo} alt='alt' width='50px' height='50px'/>
+                <Message key={m.id} message={m.message} id={m.id}/>
+            </div>
+        </div>));
 
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItem}>
-                {DialogsElements}
+                {dialogsElements}
             </div>
-            <div className={s.Messages}>
-                {MessagesElements}
+            <div className={s.DialogsItem}>
+                {messagesElements}
             </div>
+            <div className={s.DialogsItem}>
+                {answerElements}
+            </div>
+
         </div>
     )
 }

@@ -1,24 +1,18 @@
-.Dialogs{
-display: grid;
-    grid-template-columns: 3fr 6fr;
-    font-size: 30px;
+.Dialogs {
+    display: grid;
+    grid-template-columns: 3fr 4fr 4fr;
+    font-size: 20px;
 
-    }
-
-.DialogsItem{
-padding: 30px;
-    border-right: 1px solid black;
 }
 
-.Messages{
+.DialogsItem {
     padding: 30px;
-}
-.Dialog img {
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
-}
-
-.Message{
+    border-right: 1px solid black;
 
 }
+
+.dFlex {
+    display: inline-flex;
+}
+
+
