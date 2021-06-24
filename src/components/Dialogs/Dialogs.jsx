@@ -27,12 +27,15 @@ const Dialogs = (props) => {
     let newMessageEl=React.createRef();
     let addMessage=()=>{
         let text=newMessageEl.current.value;
-        alert(text);
+        props.addMessage(text);
+        newMessageEl.current.value=" ";
     }
+
     let newAnswerEl=React.createRef();
     let addAnswer=()=>{
         let text=newAnswerEl.current.value;
-        alert("text");
+        props.addAnswer(text);
+        newAnswerEl.current.value=" ";
     }
 
 
@@ -44,12 +47,12 @@ const Dialogs = (props) => {
             </div>
             <div className={s.DialogsItem}>
                 {messagesElements}
-                <textarea ref={newMessageEl}></textarea>
+                <textarea ref={newMessageEl}>new Message</textarea>
                 <button onClick={addMessage}>Add new Message</button>
             </div>
             <div className={s.DialogsItem}>
                 {answerElements}
-                <textarea ref={newAnswerEl} ></textarea>
+                <textarea ref={newAnswerEl} >new Answer</textarea>
                 <button onClick={addAnswer}>Add new Answer</button>
             </div>
 

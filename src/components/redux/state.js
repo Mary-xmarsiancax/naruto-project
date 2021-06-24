@@ -48,5 +48,17 @@ export let addPost = (postMessage) => {
     rerenderAllTree(state);
 }
 
+export let addMessage = (postMessage) => {
+    let newMessage = {id: 6, message: postMessage};
+    state.dialogsPage.messages.push(newMessage);
+    rerenderAllTree(state);
+}
+
+export let addAnswer = (postMessage) => {
+    let newAnswer = {id: 6, answer: postMessage};
+    state.dialogsPage.answers.push(newAnswer);
+    rerenderAllTree(state);
+}
+
 
 export default state;
