@@ -1,25 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {rerenderAllTree} from "./render";
 import state from "./components/redux/state";
-import {addPost} from "./components/redux/state";
-import {BrowserRouter, Route} from "react-router-dom"
 
-addPost("hop-hey-lalaley!");
 
-let rerenderAllTree=()=>{
-    ReactDOM.render(
-        <BrowserRouter>
-            {/*<React.StrictMode>*/}
-            <App state={state} addPost={addPost}/>
-            {/*</React.StrictMode>*/}
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-}
-rerenderAllTree();
+rerenderAllTree(state);
+
 
 
 
