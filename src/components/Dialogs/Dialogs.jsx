@@ -47,12 +47,12 @@ const Dialogs = (props) => {
             </div>
             <div className={s.DialogsItem}>
                 {messagesElements}
-                <textarea ref={newMessageEl}>new Message</textarea>
+                <textarea ref={newMessageEl}/>
                 <button onClick={addMessage}>Add new Message</button>
             </div>
             <div className={s.DialogsItem}>
                 {answerElements}
-                <textarea ref={newAnswerEl} >new Answer</textarea>
+                <textarea ref={newAnswerEl}/>
                 <button onClick={addAnswer}>Add new Answer</button>
             </div>
 
