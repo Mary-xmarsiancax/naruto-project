@@ -44,9 +44,10 @@ let state = {
 }
 window.state = state;
 
-export let addPost = (postMessage) => {
-    let newPost = {id: 4, message: postMessage, likesCounte: 55};
+export let addPost = () => {
+    let newPost = {id: 4, message: state.profilePage.newPostText, likesCounte: 55};
     state.profilePage.newPostData.push(newPost);
+    state.profilePage.newPostText=" ";
     rerenderAllTree(state);
 }
 
