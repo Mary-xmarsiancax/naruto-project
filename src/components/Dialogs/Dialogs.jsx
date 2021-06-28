@@ -7,7 +7,7 @@ import Answer from "./Answers/Answer";
 
 
 const Dialogs = (props) => {
-    let answerElements = props.state.answers.map(a => (
+    let answerElements = props.dialogsPage.answers.map(a => (
         <div key={a.id} >
             <div className={s.dFlex}>
                 <img src={dialogLogo} alt="dialogLogo" width='50px' height='50px'/>
@@ -15,8 +15,8 @@ const Dialogs = (props) => {
                             </div>
         </div>
     ));
-    let dialogsElements = props.state.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava} id={d.id}/>);
-    let messagesElements = props.state.messages.map(m => (
+    let dialogsElements = props.dialogsPage.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava} id={d.id}/>);
+    let messagesElements = props.dialogsPage.messages.map(m => (
         <div key={m.id}>
             <div className={s.dFlex}>
                 <img src={dialogLogo} alt='alt' width='50px' height='50px'/>
