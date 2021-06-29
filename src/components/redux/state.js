@@ -24,6 +24,7 @@ let state = {
             {id: 4, message: "Hop-hop-hop!"},
             {id: 5, message: "How are you?"},
         ],
+        newMessageText: "Add me",
         answers: [
             {id: 1, answer: "Hi!"},
             {id: 2, answer: "Ok!"},
@@ -31,7 +32,8 @@ let state = {
             {id: 5, answer: "Op!Op!op!!"},
             {id: 4, answer: "I am fine!I learn Programming!"},
 
-        ]
+        ],
+        newAnswerText: "Answer to me"
     },
     friendsPage: {
         friends: [
@@ -47,7 +49,7 @@ window.state = state;
 export let addPost = () => {
     let newPost = {id: 4, message: state.profilePage.newPostText, likesCounte: 55};
     state.profilePage.newPostData.push(newPost);
-    state.profilePage.newPostText=" ";
+    state.profilePage.newPostText = " ";
     rerenderAllTree(state);
 }
 
@@ -56,17 +58,26 @@ export let updateNewPostText = (newText) => {
     rerenderAllTree(state);
 }
 
-export let addMessage = (postMessage) => {
-    let newMessage = {id: 6, message: postMessage};
+export let addMessage = () => {
+    let newMessage = {id: 6, message: state.dialogsPage.newMessageText};
     state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.newMessageText = " ";
+    rerenderAllTree(state);
+}
+export let updateNewMessageText = (newTextMessage) => {
+    state.dialogsPage.newMessageText = newTextMessage;
     rerenderAllTree(state);
 }
 
-export let addAnswer = (postMessage) => {
-    let newAnswer = {id: 6, answer: postMessage};
+export let addAnswer = () => {
+    let newAnswer = {id: 6, answer: state.dialogsPage.newAnswerText};
     state.dialogsPage.answers.push(newAnswer);
+    state.dialogsPage.newAnswerText = " ";
     rerenderAllTree(state);
 }
-
+export let updateNewAnswerText = (newTextAnswer) => {
+    state.dialogsPage.newAnswerText = newTextAnswer;
+    rerenderAllTree(state);
+}
 
 export default state;
