@@ -1,4 +1,7 @@
-import {rerenderAllTree} from "../../render";
+let rerenderAllTree = () => {
+    console.log("State was changed");
+}
+
 
 let state = {
     profilePage: {
@@ -7,7 +10,8 @@ let state = {
             {id: 2, message: "How are you?", likesCounte: 20},
             {id: 3, message: "I am fine!I am under the water", likesCounte: 23},
         ],
-        newPostText: "it camasutra"
+        // newPostText: "it camasutra"
+        newPostText: " "
     },
     dialogsPage: {
         dialogData: [
@@ -24,7 +28,8 @@ let state = {
             {id: 4, message: "Hop-hop-hop!"},
             {id: 5, message: "How are you?"},
         ],
-        newMessageText: "Add me",
+        // newMessageText: "Add me",
+        newMessageText: " ",
         answers: [
             {id: 1, answer: "Hi!"},
             {id: 2, answer: "Ok!"},
@@ -33,7 +38,8 @@ let state = {
             {id: 4, answer: "I am fine!I learn Programming!"},
 
         ],
-        newAnswerText: "Answer to me"
+        // newAnswerText: "Answer to me"
+        newAnswerText: " "
     },
     friendsPage: {
         friends: [
@@ -46,38 +52,43 @@ let state = {
 }
 window.state = state;
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {id: 4, message: state.profilePage.newPostText, likesCounte: 55};
     state.profilePage.newPostData.push(newPost);
     state.profilePage.newPostText = " ";
     rerenderAllTree(state);
 }
-
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderAllTree(state);
 }
 
-export let addMessage = () => {
+
+export const addMessage = () => {
     let newMessage = {id: 6, message: state.dialogsPage.newMessageText};
     state.dialogsPage.messages.push(newMessage);
     state.dialogsPage.newMessageText = " ";
     rerenderAllTree(state);
 }
-export let updateNewMessageText = (newTextMessage) => {
+export const updateNewMessageText = (newTextMessage) => {
     state.dialogsPage.newMessageText = newTextMessage;
     rerenderAllTree(state);
 }
 
-export let addAnswer = () => {
+
+export const addAnswer = () => {
     let newAnswer = {id: 6, answer: state.dialogsPage.newAnswerText};
     state.dialogsPage.answers.push(newAnswer);
     state.dialogsPage.newAnswerText = " ";
     rerenderAllTree(state);
 }
-export let updateNewAnswerText = (newTextAnswer) => {
+export const updateNewAnswerText = (newTextAnswer) => {
     state.dialogsPage.newAnswerText = newTextAnswer;
     rerenderAllTree(state);
 }
 
+
+export const subscribe=(observer)=>{
+    rerenderAllTree=observer;
+}
 export default state;
