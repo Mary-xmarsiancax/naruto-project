@@ -1,4 +1,4 @@
-let rerenderAllTree = () => {
+let applyCallback = () => {
     console.log("State was changed");
 }
 
@@ -56,11 +56,11 @@ export const addPost = () => {
     let newPost = {id: 4, message: state.profilePage.newPostText, likesCounte: 55};
     state.profilePage.newPostData.push(newPost);
     state.profilePage.newPostText = " ";
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 
 
@@ -68,11 +68,11 @@ export const addMessage = () => {
     let newMessage = {id: 6, message: state.dialogsPage.newMessageText};
     state.dialogsPage.messages.push(newMessage);
     state.dialogsPage.newMessageText = " ";
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 export const updateNewMessageText = (newTextMessage) => {
     state.dialogsPage.newMessageText = newTextMessage;
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 
 
@@ -80,15 +80,15 @@ export const addAnswer = () => {
     let newAnswer = {id: 6, answer: state.dialogsPage.newAnswerText};
     state.dialogsPage.answers.push(newAnswer);
     state.dialogsPage.newAnswerText = " ";
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 export const updateNewAnswerText = (newTextAnswer) => {
     state.dialogsPage.newAnswerText = newTextAnswer;
-    rerenderAllTree(state);
+    applyCallback(state);
 }
 
 
 export const subscribe=(observer)=>{
-    rerenderAllTree=observer;
+    applyCallback=observer;
 }
 export default state;
