@@ -1,19 +1,19 @@
-.app-wrapper{
-  width: 1200px;
-  margin: 0 auto;
-  display: grid;
-grid-template-areas:
+.app-wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
 "h h"
 "n c";
 
-  grid-template-rows: 295px 950px;
-  grid-template-columns: 2fr 7fr;
-  /*grid-gap: 10px;*/
+    grid-template-rows: 295px 950px;
+    grid-template-columns: 2fr 7fr;
+
 }
 
 .app-wrapper-content {
-  grid-area: c;
-  background-color: darkorange;
+    grid-area: c;
+    background-color: darkorange;
 }
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import s from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPosts from "./MyPosts/MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 const Profile = (props) => {
@@ -14,11 +15,7 @@ const Profile = (props) => {
     // ]
     return <div className={s.content}>
         <ProfileInfo/>
-        <MyPosts postData={props.profilePage.newPostData}
-                 newPostText={props.profilePage.newPostText}
-                 addPost={props.addPost}
-                 updateNewPostText={props.updateNewPostText}
-        />
+        <MyPostsContainer store={props.store}/>
     </div>
 }
 export default Profile;

@@ -8,7 +8,8 @@ import Answer from "./Answers/Answer";
 
 
 const Dialogs = (props) => {
-    let answerElements = props.dialogsPage.answers.map(a => (
+    console.log(props);
+    let answerElements = props.answers.map(a => (
         <div key={a.id}>
             <div className={s.dFlex}>
                 <img src={dialogLogo} alt="dialogLogo" width='50px' height='50px'/>
@@ -16,9 +17,9 @@ const Dialogs = (props) => {
             </div>
         </div>
     ));
-    let dialogsElements = props.dialogsPage.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava}
+    let dialogsElements = props.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava}
                                                                             id={d.id}/>);
-    let messagesElements = props.dialogsPage.messages.map(m => (
+    let messagesElements = props.messages.map(m => (
         <div key={m.id}>
             <div className={s.dFlex}>
                 <img src={dialogLogo} alt='alt' width='50px' height='50px'/>
@@ -26,25 +27,26 @@ const Dialogs = (props) => {
             </div>
         </div>));
 
-    let newMessageEl = React.createRef();
+
     let addMessage = () => {
         props.addMessage();
     }
 
-    let onMessageChange = () => {
-        let text = newMessageEl.current.value;
-        props.updateNewMessageText(text);
+
+    let onMessageChange = (event) => {
+        let text = event.target.value;
+        props.onMessageChange(text);
     }
 
 
-    let newAnswerEl = React.createRef();
     let addAnswer = () => {
         props.addAnswer();
     }
 
-    let onAnswerChange=()=>{
-        let text=newAnswerEl.current.value;
-        props.updateNewAnswerText(text)
+
+    let onAnswerChange = (event) => {
+        let text = event.target.value;
+        props.onAnswerChange(text);
     }
 
     return (
@@ -54,12 +56,12 @@ const Dialogs = (props) => {
             </div>
             <div className={s.DialogsItem}>
                 {messagesElements}
-                <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessageEl}/>
+                <textarea onChange={onMessageChange} value={props.newMessageText}/>
                 <button onClick={addMessage}>Add new Message</button>
             </div>
             <div className={s.DialogsItem}>
                 {answerElements}
-                <textarea onChange={onAnswerChange} value={props.newAnswerText} ref={newAnswerEl} />
+                <textarea onChange={onAnswerChange} value={props.newAnswerText}/>
                 <button onClick={addAnswer}>Add new Answer</button>
             </div>
 
