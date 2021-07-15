@@ -16,14 +16,19 @@ let initialState = {
 };
 const answersReduser=(state = initialState,action)=>{
     switch (action.type) {
-        case ADD_ANSWER:
+        case ADD_ANSWER:{
             let newAnswer = {id: 6, answer: state.newAnswerText};
-            state.answers.push(newAnswer);
-            state.newAnswerText = " ";
-            return state;
-        case UPDATE_NEW_ANSWER_TEXT:
-            state.newAnswerText = action.newTextAnswer;
-            return state;
+            let stateCopy={...state}
+            stateCopy.answers=[...stateCopy.answers];
+            stateCopy.answers.push(newAnswer);
+            stateCopy.newAnswerText = " ";
+            return stateCopy;
+        }
+        case UPDATE_NEW_ANSWER_TEXT:{
+            let stateCopy={...state}
+            stateCopy.newAnswerText = action.newTextAnswer;
+            return stateCopy;
+        }
         default:return state;
     }
 };

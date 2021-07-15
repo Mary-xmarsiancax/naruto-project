@@ -24,7 +24,7 @@ const NavBar = (props) => {
         <div className={s.item}>
             <div className={s.friends}><a >Friends</a></div>
             <div>
-                <FriendsContainer store={props.store}/>
+                <FriendsContainer/>
             </div>
         </div>
     </nav>
