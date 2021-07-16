@@ -14,22 +14,33 @@ let initialState = {
     ],
     newAnswerText: " "
 };
-const answersReduser=(state = initialState,action)=>{
+const answersReduser = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_ANSWER:{
-            let newAnswer = {id: 6, answer: state.newAnswerText};
-            let stateCopy={...state}
-            stateCopy.answers=[...stateCopy.answers];
-            stateCopy.answers.push(newAnswer);
-            stateCopy.newAnswerText = " ";
-            return stateCopy;
+        case ADD_ANSWER: {
+            let bodyText = state.newAnswerText;
+            return {
+                ...state,
+                answers: [...state.answers, {id: 6, answer: bodyText}],
+                newAnswerText: " "
+            }
+            // let newAnswer = {id: 6, answer: state.newAnswerText};
+            // let stateCopy = {...state}
+            // stateCopy.answers = [...state.answers];
+            // stateCopy.answers.push(newAnswer);
+            // stateCopy.newAnswerText = " ";
+            // return stateCopy;
         }
-        case UPDATE_NEW_ANSWER_TEXT:{
-            let stateCopy={...state}
-            stateCopy.newAnswerText = action.newTextAnswer;
-            return stateCopy;
+        case UPDATE_NEW_ANSWER_TEXT: {
+            return{
+                ...state,
+                newAnswerText : action.newTextAnswer
+            }
+            // let stateCopy = {...state}
+            // stateCopy.newAnswerText = action.newTextAnswer;
+            // return stateCopy;
         }
-        default:return state;
+        default:
+            return state;
     }
 };
 export default answersReduser;
