@@ -1,0 +1,63 @@
+.pageNumber span {
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all .5s;
+    padding: 1em;
+}
+
+.pageNumber span:hover {
+    color: green;
+    font-size:2em;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+
+.usersWrap {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-content: center;
+    border: black solid 2px;
+    margin: 5px;
+    font-size: medium;
+    color: black;
+    font-weight: bold;
+    grid-gap: 1em;
+    background-color: orange;
+}
+
+.leftColumn {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    align-content: center;
+}
+
+.rightColumn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.fullNameColumn {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.countryName {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;;
+}
+
+.usersWrap .leftColumn img {
+    width: 40%;
+    height: 40%;
+    border-radius: 20px;
+}
+
+.usersWrap .leftColumn button {
+    padding: 3px;
+    margin: 3px;
+}
+
+

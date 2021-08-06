@@ -20,21 +20,13 @@ const postReducer = (state = initialState, action) => {
                 newPostData: [...state.newPostData, {id: 4, message: bodyText, likesCount: 55}],
                 newPostText: " "
             }
-            // let newPost = {id: 4, message: state.newPostText, likesCount: 55};
-            // let stateCopy = {...state};
-            // stateCopy.newPostData = [...state.newPostData];
-            // stateCopy.newPostData.push(newPost);
-            // stateCopy.newPostText = " ";
-            // return stateCopy;
         }
         case UPDATE_NEW_POST_TEXT: {
             return {
                 ...state,
                 newPostText: action.newText,
             }
-            // let stateCopy = {...state}
-            // stateCopy.newPostText = action.newText;
-            // return stateCopy;
+
         }
         default:
             return state;

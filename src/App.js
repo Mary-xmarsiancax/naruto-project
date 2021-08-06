@@ -7,6 +7,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import {Route} from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/dialogsConteiner"
+import UsersContainer from "./components/users/usersConteiner";
 
 
 const App = (props) => {
@@ -17,10 +18,9 @@ const App = (props) => {
             <div className="app-wrapper-content">
                 <Route path="/dialogs" render={() => <DialogsContainer/>}/>
                 <Route path="/profile" render={() => <Profile/>}/>
-
-
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
+                <Route path="/users" render={() => <UsersContainer/>}/>
                 <Route path="/settings" render={() => <Settings/>}/>
             </div>
         </div>
