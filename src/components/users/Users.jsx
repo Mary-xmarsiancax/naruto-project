@@ -2,6 +2,7 @@ import emptyAvatar from "../../images/imgForUsesrs.jpg"
 import s from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {followAPI} from "../../api/api";
 
 
 let Users = (props) => {
@@ -30,32 +31,16 @@ let Users = (props) => {
                         </NavLink>
                         <div>
                             {el.followed
-                                ? <button onClick={() =>
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0//follow/${el.id}`,
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY":
-                                                    "cacb72d4-1b5a-4f57-a8f1-e95013a64714"
-                                            }
-                                        })
-                                        .then(response => {
-                                            if (response.data.resultCode == 0) {
+                                ? <button onClick={() =>followAPI.unFollowToFriend(el.id)
+                                        .then(data => {
+                                            if (data.resultCode == 0) {
                                                 props.unfollow(el.id);
                                             }
                                         })
                                 }> Follow < /button>
-                                : <button onClick={() =>
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0//follow/${el.id}`,{},
-                                        {
-                                            withCredentials: true,
-                                            headers: {
-                                                "API-KEY":
-                                                    "cacb72d4-1b5a-4f57-a8f1-e95013a64714"
-                                            }
-                                        })
-                                            .then(response => {
-                                                if (response.data.resultCode == 0) {
+                                : <button onClick={() =>followAPI.followToFriend(el.id)
+                                            .then(data => {
+                                                if (data.resultCode == 0) {
                                                     props.follow(el.id)
                                                 }
                                             })
