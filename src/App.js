@@ -8,16 +8,18 @@ import News from "./components/News/News";
 import {Route} from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/dialogsConteiner"
 import UsersContainer from "./components/users/usersConteiner";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 const App = (props) => {
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <NavBar />
             <div className="app-wrapper-content">
                 <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                <Route path="/profile" render={() => <Profile/>}/>
+                <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/users" render={() => <UsersContainer/>}/>

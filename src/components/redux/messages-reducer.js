@@ -19,7 +19,7 @@ const messagesReducer = (state = initialState,action) => {
             let bodyText= state.newMessageText;
             return{
                 ...state  ,
-                messages:[...state.messages,{id: 6, message: bodyText}],
+                messages:[...state.messages,{id: state.messages.length+1, message: bodyText}],
                 newMessageText: " "
             };
             // let stateCopy={...state};

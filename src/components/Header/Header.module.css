@@ -3,18 +3,37 @@
     background-color: black;
 
 }
+.header{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
 
 .header .imgOne, .header .imgTwo{
     display: inline-block;
    }
 
-.header .imgTwo img {
+.header .imgTwo {
     width: auto;
-    padding-left: 100px;
-    padding-bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
 }
-.header .imgOne img {
+.header .imgOne  {
     height: 290px;
 }
+
+
+.loginBlock {
+    place-self: end;
+    font-size: 30px;
+    padding: 1em;
+    color: orange;
+
+}
+.loginBlock a{
+    color: orange;
+}
+
 
 

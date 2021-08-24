@@ -20,7 +20,7 @@ const answersReduser = (state = initialState, action) => {
             let bodyText = state.newAnswerText;
             return {
                 ...state,
-                answers: [...state.answers, {id: 6, answer: bodyText}],
+                answers: [...state.answers, {id:state.answers.length+1, answer: bodyText}],
                 newAnswerText: " "
             }
             // let newAnswer = {id: 6, answer: state.newAnswerText};

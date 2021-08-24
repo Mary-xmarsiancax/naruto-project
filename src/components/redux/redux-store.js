@@ -5,6 +5,7 @@ import answersReduser from "./answers-reducer";
 import friendsReduser from "./friends-reducer";
 import dialogsReduser from "./dialogs-reducer";
 import usersReducer from "./users-reducer"
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
     profilePage: postReducer,
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     messagesPage: messagesReducer,
     answersPage: answersReduser,
     friendsPage: friendsReduser,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth: authReducer
 });
 
 
