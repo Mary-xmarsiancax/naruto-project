@@ -1,11 +1,13 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import postReducer from "./posts-reducer";
 import messagesReducer from "./messages-reducer";
 import answersReduser from "./answers-reducer";
 import friendsReduser from "./friends-reducer";
 import dialogsReduser from "./dialogs-reducer";
-import usersReducer from "./users-reducer"
+import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
+import thunkMiddleware from "redux-thunk";
+
 
 let reducers = combineReducers({
     profilePage: postReducer,
@@ -18,7 +20,7 @@ let reducers = combineReducers({
 });
 
 
-let store = createStore(reducers);
+let store = createStore(reducers,applyMiddleware(thunkMiddleware));
 window.store=store;
 
 export default store;
