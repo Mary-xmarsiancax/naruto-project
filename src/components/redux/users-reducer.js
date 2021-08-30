@@ -83,7 +83,7 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const getUsers = (currentPage,pageSize) => {
+export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize).then(data => {
@@ -98,34 +98,36 @@ export const getUsers = (currentPage,pageSize) => {
     }
 }
 
-    export const follow = (userId) => {
-        return (dispatch) => {
-            dispatch(toggleFollowingProgress(true,userId));
-            followAPI.followToFriend(userId)
-                .then(data => {
-                    if (data.resultCode == 0) {
-                        dispatch(followSucces(userId));
-                    }
-                    dispatch(toggleFollowingProgress(false,userId));
-                })
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        followAPI.followToFriend(userId)
+            .then(data => {
+                if (data.resultCode == 0) {
+                    dispatch(followSucces(userId));
+                }
+                dispatch(toggleFollowingProgress(false, userId));
+            })
 
-            }
-        }
+    }
+}
 
 export const unfollow = (userId) => {
     return (dispatch) => {
-        dispatch(toggleFollowingProgress(true,userId));
+        dispatch(toggleFollowingProgress(true, userId));
 
         followAPI.unFollowToFriend(userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     dispatch(unfollowSucces(userId));
                 }
-                dispatch(toggleFollowingProgress(false,userId));
+                dispatch(toggleFollowingProgress(false, userId));
             })
 
     }
 }
+
+
 
 
 export default usersReducer;
