@@ -4,6 +4,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import dialogLogo from "../../images/dialogsLogo.png";
 import Answer from "./Answers/Answer";
+import {Redirect} from "react-router-dom";
 
 
 

@@ -14,7 +14,8 @@ import {connect} from "react-redux";
 // }
 const mapStateToProps = (state) => {
     return {
-        friends: state.friendsPage.friends
+        friends: state.friendsPage.friends,
+        isAuth:state.auth.isAuth
     }
 }
 const mapDispatchToProps = (dispatch) => {

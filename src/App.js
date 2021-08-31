@@ -1,7 +1,5 @@
 import './App.css';
-import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
@@ -10,6 +8,7 @@ import DialogsContainer from "./components/Dialogs/dialogsConteiner"
 import UsersContainer from "./components/users/usersConteiner";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/login/login";
 
 
 const App = (props) => {
@@ -24,6 +23,7 @@ const App = (props) => {
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/users" render={() => <UsersContainer/>}/>
                 <Route path="/settings" render={() => <Settings/>}/>
+                <Route path="/login" render={() => <Login/>}/>
             </div>
         </div>
     )

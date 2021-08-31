@@ -1,9 +1,10 @@
 import React from 'react';
 import s from "./Profile.module.css";
 import Preloader from "../../common/Preloader/Preloader";
+import altAvaProfile from "../../../images/altAvaProfile.jpg"
 
 const ProfileInfo = (props) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
     return (
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
                      alt="narutoAndThisFriends"/>
             </div>
             <div className={s.avaDescription}>
-                <img src={props.profile.photos.large} alt="avaLarge"/>
+                <img src={props.profile.photos.large != null ? props.profile.photos.large : altAvaProfile} alt="avaLarge"/>
                 <div>
                     Имя: {props.profile.fullName}
                 </div>

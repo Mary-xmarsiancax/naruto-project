@@ -5,6 +5,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import withAuthRedirect from "../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component {
@@ -26,6 +27,7 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    follow={this.props.follow}
                    followingInProgress={this.props.followingInProgress}
+                   isAuth={this.props.isAuth}
 
 
             />
@@ -42,9 +44,11 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
+let UsersRedirectContainer = withAuthRedirect(UsersContainer)
+
 
 export default connect(mapStateToProps, {
     follow,
@@ -52,4 +56,4 @@ export default connect(mapStateToProps, {
     setUsersCount,
     toggleFollowingProgress,
     getUsers
-})(UsersContainer);
+})(UsersRedirectContainer);

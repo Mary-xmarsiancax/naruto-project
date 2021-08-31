@@ -18,7 +18,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_FO
 
 let initialState = {
         users: [],
-        pageSize: 6,
+        pageSize: 7,
         totalUsersCount: 0,
         currentPage: 1,
         isFetching: true,
@@ -92,7 +92,7 @@ export const getUsers = (currentPage, pageSize) => {
             if (data.totalCount <= 96) {
                 dispatch(setUsersCount(data.totalCount))
             }
-            dispatch(setUsersCount(96))
+            dispatch(setUsersCount(180))
 
         })
     }

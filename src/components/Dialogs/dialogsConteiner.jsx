@@ -2,6 +2,8 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {addMessageActionCreator, onMessageChangeActionCreator} from "../redux/messages-reducer";
 import {addAnswerActionCreator, onAnswerChangeActionCreator} from "../redux/answers-reducer";
+import React from "react";
+import withAuthRedirect from "../hoc/withAuthRedirect";
 
 
 
@@ -11,7 +13,7 @@ const mapStateToProps = (state) => {
         answers: state.answersPage.answers,
         dialogData: state.dialogsPage.dialogData,
         newMessageText: state.messagesPage.newMessageText,
-        newAnswerText: state.answersPage.newAnswerText
+        newAnswerText: state.answersPage.newAnswerText,
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -30,7 +32,8 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+let DialogsRedirectContainer = withAuthRedirect(Dialogs);
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsRedirectContainer);
 
 export default DialogsContainer;
