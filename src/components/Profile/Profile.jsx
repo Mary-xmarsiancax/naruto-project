@@ -8,8 +8,8 @@ import ProfileStatus from "./ProfileStatus";
 
 const Profile = (props) => {
     return <div className={s.content}>
-        <ProfileInfo profile={props.profile}/>
-        <ProfileStatus status={"Hello!!I am best!"}/>
+        <ProfileInfo profile={props.profile} />
+        <ProfileStatus status={props.status}/>
         <MyPostsContainer/>
     </div>
 }
