@@ -7,3 +7,11 @@
     height: 400px;
     width: 1000px;
     }
+.usersStatus{
+    font-size: large;
+    padding-left: 2em;
+    padding-top: 2em;
+    font-weight: bold;
+    font-family: monospace;
+
+}

@@ -41,3 +41,15 @@ export const getProfileAPI = {
         .then(response => response.data);
     }
 }
+export const getUsersStatusAPI = {
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+            .then(response => response.data);
+    }
+}
+export const updateUsersStatusAPI = {
+    updateStatus(status) {
+        return instance.put(`profile/status/`,{status:status})
+            .then(response => response.data);
+    }
+}

@@ -2,12 +2,14 @@ import React from 'react';
 import s from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {Redirect} from "react-router-dom";
+import ProfileStatus from "./ProfileStatus";
+
 
 
 const Profile = (props) => {
     return <div className={s.content}>
         <ProfileInfo profile={props.profile}/>
+        <ProfileStatus status={"Hello!!I am best!"}/>
         <MyPostsContainer/>
     </div>
 }
