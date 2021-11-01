@@ -9,6 +9,10 @@ import authReducer from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 
 
+
+
+
+
 let reducers = combineReducers({
     profilePage: postReducer,
     dialogsPage: dialogsReduser,
@@ -17,6 +21,7 @@ let reducers = combineReducers({
     friendsPage: friendsReduser,
     usersPage: usersReducer,
     auth: authReducer
+
 });
 
 

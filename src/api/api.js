@@ -53,3 +53,4 @@ export const updateUsersStatusAPI = {
             .then(response => response.data);
     }
 }
+export const login = (body) =>  instance.post(`/auth/login`, body);

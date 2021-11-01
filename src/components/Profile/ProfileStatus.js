@@ -3,24 +3,41 @@ import s from "./Profile.module.css";
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
     activateEditMode = () => {
         this.setState({
-            editMode : true
+            editMode: true
         })
     }
     deactivateEditMode = () => {
         this.setState({
-            editMode : false
+            editMode: false
         })
+        this.props.updateUsersStatus(this.state.status)
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
         return (<div>
                 {this.state.editMode ?
-                    <div ><input onBlur={this.deactivateEditMode} defaultValue={this.props.status} type="string"/></div>
-                    : <div className={s.usersStatus} onDoubleClick={this.activateEditMode}>{this.props.status}</div>}
+                    <div><input onBlur={this.deactivateEditMode}
+                                onChange={this.onStatusChange} value={this.state.status} type="string"/></div>
+                    : <div className={s.usersStatus}
+                           onDoubleClick={this.activateEditMode}>{this.props.status || "no status yet"}</div>}
             </div>
         )
     }

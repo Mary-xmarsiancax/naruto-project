@@ -75,7 +75,7 @@ export const updateUsersStatus = (status) => {
         updateUsersStatusAPI.updateStatus(status)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispatch(setUsersStatus(data));
+                    dispatch(setUsersStatus(status));
                 }
 
             })
