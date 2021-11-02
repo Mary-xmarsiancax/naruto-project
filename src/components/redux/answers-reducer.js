@@ -1,7 +1,6 @@
 const ADD_ANSWER = "ADD-ANSWER";
-export const addAnswerActionCreator = () => ({type: ADD_ANSWER});
-const UPDATE_NEW_ANSWER_TEXT = "UPDATE-NEW-ANSWER-TEXT";
-export const onAnswerChangeActionCreator = (text) => ({type: UPDATE_NEW_ANSWER_TEXT, newTextAnswer: text});
+export const addAnswerActionCreator = (formData) => ({type: ADD_ANSWER, formData:formData});
+
 
 let initialState = {
     answers: [
@@ -17,27 +16,11 @@ let initialState = {
 const answersReduser = (state = initialState, action) => {
     switch (action.type) {
         case ADD_ANSWER: {
-            let bodyText = state.newAnswerText;
             return {
                 ...state,
-                answers: [...state.answers, {id:state.answers.length+1, answer: bodyText}],
+                answers: [...state.answers, {id:state.answers.length+1, answer: action.formData.answer}],
                 newAnswerText: " "
             }
-            // let newAnswer = {id: 6, answer: state.newAnswerText};
-            // let stateCopy = {...state}
-            // stateCopy.answers = [...state.answers];
-            // stateCopy.answers.push(newAnswer);
-            // stateCopy.newAnswerText = " ";
-            // return stateCopy;
-        }
-        case UPDATE_NEW_ANSWER_TEXT: {
-            return{
-                ...state,
-                newAnswerText : action.newTextAnswer
-            }
-            // let stateCopy = {...state}
-            // stateCopy.newAnswerText = action.newTextAnswer;
-            // return stateCopy;
         }
         default:
             return state;

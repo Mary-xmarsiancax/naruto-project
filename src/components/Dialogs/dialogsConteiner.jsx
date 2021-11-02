@@ -1,7 +1,7 @@
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {addMessageActionCreator, onMessageChangeActionCreator} from "../redux/messages-reducer";
-import {addAnswerActionCreator, onAnswerChangeActionCreator} from "../redux/answers-reducer";
+import {addMessageActionCreator} from "../redux/messages-reducer";
+import {addAnswerActionCreator} from "../redux/answers-reducer";
 import React from "react";
 import withAuthRedirect from "../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -18,18 +18,14 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator())
+        addMessage: (formData) => {
+            dispatch(addMessageActionCreator(formData))
         },
-        onMessageChange: (text) => {
-            dispatch(onMessageChangeActionCreator(text))
+
+        addAnswer: (formData) => {
+            dispatch(addAnswerActionCreator(formData))
         },
-        addAnswer: () => {
-            dispatch(addAnswerActionCreator())
-        },
-        onAnswerChange: (text) => {
-            dispatch(onAnswerChangeActionCreator(text))
-        }
+
     }
 }
 export default compose(

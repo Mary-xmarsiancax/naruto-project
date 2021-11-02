@@ -4,12 +4,10 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import dialogLogo from "../../images/dialogsLogo.png";
 import Answer from "./Answers/Answer";
-import {Redirect} from "react-router-dom";
-
+import {Formik, Field, Form} from 'formik';
 
 
 const Dialogs = (props) => {
-    console.log(props);
     let answerElements = props.answers.map(a => (
         <div key={a.id}>
             <div className={s.dFlex}>
@@ -19,7 +17,7 @@ const Dialogs = (props) => {
         </div>
     ));
     let dialogsElements = props.dialogData.map(d => <DialogItem key={d.id} name={d.name} ava={d.ava}
-                                                                            id={d.id}/>);
+                                                                id={d.id}/>);
     let messagesElements = props.messages.map(m => (
         <div key={m.id}>
             <div className={s.dFlex}>
@@ -28,28 +26,14 @@ const Dialogs = (props) => {
             </div>
         </div>));
 
-
-    let addMessage = () => {
-        props.addMessage();
+    const onSubmitMessage = (formData, helper) => {
+        helper.resetForm();
+        props.addMessage(formData);
     }
-
-
-    let onMessageChange = (event) => {
-        let text = event.target.value;
-        props.onMessageChange(text);
+    const onSubmitAnswer = (formData, helper) => {
+        helper.resetForm();
+        props.addAnswer(formData);
     }
-
-
-    let addAnswer = () => {
-        props.addAnswer();
-    }
-
-
-    let onAnswerChange = (event) => {
-        let text = event.target.value;
-        props.onAnswerChange(text);
-    }
-
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItem}>
@@ -57,13 +41,38 @@ const Dialogs = (props) => {
             </div>
             <div className={s.DialogsItem}>
                 {messagesElements}
-                <textarea onChange={onMessageChange} value={props.newMessageText}/>
-                <button onClick={addMessage}>Add new Message</button>
+                <Formik
+                    initialValues={{
+                        message: ""
+                    }}
+                    onSubmit={onSubmitMessage}
+                >
+                    <Form>
+                        <div>
+                            <Field id="message" name="message" placeholder="add message"/>
+                            <button type="submit">Add message</button>
+                        </div>
+                    </Form>
+                </Formik>
+
             </div>
             <div className={s.DialogsItem}>
                 {answerElements}
-                <textarea onChange={onAnswerChange} value={props.newAnswerText}/>
-                <button onClick={addAnswer}>Add new Answer</button>
+                <Formik
+                    initialValues={{
+                        answer: ""
+                    }}
+                    onSubmit={onSubmitAnswer}
+                >
+                    <Form>
+                        <div>
+                            <Field id="answer" name="answer" placeholder="add answer"/>
+                            <button type="submit">Add message</button>
+                        </div>
+                    </Form>
+                </Formik>
+                {/*<textarea onChange={onAnswerChange} value={props.newAnswerText}/>*/}
+                {/*<button onClick={addAnswer}>Add new Answer</button>*/}
             </div>
 
         </div>
