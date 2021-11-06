@@ -48,7 +48,6 @@ let mapStateToProps = (state) => {
         followingInProgress: state.usersPage.followingInProgress,
     }
 }
-let withRedirectUsers = withAuthRedirect(UsersContainer)
 export default compose(
     connect(mapStateToProps, {
         follow,

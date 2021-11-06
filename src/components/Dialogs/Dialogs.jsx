@@ -71,8 +71,6 @@ const Dialogs = (props) => {
                         </div>
                     </Form>
                 </Formik>
-                {/*<textarea onChange={onAnswerChange} value={props.newAnswerText}/>*/}
-                {/*<button onClick={addAnswer}>Add new Answer</button>*/}
             </div>
 
         </div>

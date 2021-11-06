@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./Header.module.css";
 import logo from "../../images/stringNaruto.png";
 import logoMain from "../../images/MainAva.jpg";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 const Header = (props) => {
     return <header className={s.header}>
