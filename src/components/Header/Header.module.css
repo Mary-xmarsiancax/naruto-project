@@ -34,6 +34,14 @@
 .loginBlock a{
     color: orange;
 }
-
+.headerLogout{
+    display: flex;
+    justify-content:center;
+}
+.headerLogoutButton{
+    background-color: black;
+    border: orange solid 1px;
+    color: orange;
+}
 
 

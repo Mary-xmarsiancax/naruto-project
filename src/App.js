@@ -11,6 +11,7 @@ import Login from "./components/login/login";
 import NewsContainer from "./components/News/NewsContainer";
 import MusicContainer from "./components/Music/MusicContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
+import LoginContainer from "./components/login/loginContainer";
 
 
 const App = (props) => {
@@ -25,7 +26,7 @@ const App = (props) => {
                 <Route path="/music" render={() => <MusicContainer/>}/>
                 <Route path="/users" render={() => <UsersContainer/>}/>
                 <Route path="/settings" render={() => <SettingsContainer/>}/>
-                <Route path="/login" render={() => <Login/>}/>
+                <Route path="/login" render={() => <LoginContainer/>}/>
             </div>
         </div>
     )

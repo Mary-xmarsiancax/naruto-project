@@ -1,9 +1,8 @@
 import {Formik, Field, Form} from 'formik';
-import {login} from "../../api/api";
 
-const Login = () => {
+const Login = (props) => {
     const onSubmit = (formData) => {
-        login(formData).then(response => console.log(response.data), err => alert(err))
+        props.login(formData)
     }
     return <div>
         <h1>login</h1>

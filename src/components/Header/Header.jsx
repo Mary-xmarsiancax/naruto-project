@@ -21,8 +21,12 @@ const Header = (props) => {
             {props.isAuth
             ? props.login
             :<NavLink to={"/login"}>Login</NavLink>}
+            <div className={s.headerLogout}>
+                <button onClick={props.logout} className={s.headerLogoutButton}>LOGOUT</button>
+            </div>
 
         </div>
+
     </header>
 }
 export default Header;

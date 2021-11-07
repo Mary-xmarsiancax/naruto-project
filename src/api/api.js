@@ -28,12 +28,6 @@ export const followAPI = {
     },
 
 }
-export const authMeAPI = {
-    auth() {
-        return instance.get(`auth/me`)
-            .then(response => response.data);
-    }
-}
 
 export const getProfileAPI = {
     getProfile(userId) {
@@ -53,4 +47,16 @@ export const updateUsersStatusAPI = {
             .then(response => response.data);
     }
 }
-export const login = (body) =>  instance.post(`/auth/login`, body);
+export const authMeAPI = {
+    auth() {
+        return instance.get(`auth/me`)
+            .then(response => response.data);
+    },
+    login(body) {
+        return instance.post(`/auth/login`, body);
+    },
+    logout() {
+        return instance.delete(`/auth/login`);
+    }
+}
+
