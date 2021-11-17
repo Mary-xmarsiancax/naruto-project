@@ -5,13 +5,8 @@ import answersReduser from "./answers-reducer";
 import friendsReduser from "./friends-reducer";
 import dialogsReduser from "./dialogs-reducer";
 import usersReducer from "./users-reducer";
-import authReducer from "./auth-reducer";
+import authReducer, {authMe, login} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
-
-
-
-
-
 
 let reducers = combineReducers({
     profilePage: postReducer,
@@ -27,5 +22,6 @@ let reducers = combineReducers({
 
 let store = createStore(reducers,applyMiddleware(thunkMiddleware));
 window.store=store;
+store.dispatch(authMe());
 
 export default store;

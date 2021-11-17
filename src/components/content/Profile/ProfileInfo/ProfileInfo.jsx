@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./Profile.module.css";
-import Preloader from "../../common/Preloader/Preloader";
-import altAvaProfile from "../../../images/altAvaProfile.jpg"
+import Preloader from "../../../common/Preloader/Preloader";
+import altAvaProfile from "../../../../images/altAvaProfile.jpg"
 
 const ProfileInfo = (props) => {
     if (!props.profile) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import News from "./News";
 import {compose} from "redux";
-import withAuthRedirect from "../hoc/withAuthRedirect";
+import withAuthRedirect from "../../common/hoc/withAuthRedirect";
 
 
 const NewsContainer = (props) => {
@@ -10,5 +10,4 @@ const NewsContainer = (props) => {
     )
 }
 export default compose(
-    withAuthRedirect
 )(NewsContainer);

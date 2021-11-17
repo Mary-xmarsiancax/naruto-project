@@ -1,7 +1,7 @@
 import React from 'react';
 import Music from "./Music";
 import {compose} from "redux";
-import withAuthRedirect from "../hoc/withAuthRedirect";
+import withAuthRedirect from "../../common/hoc/withAuthRedirect";
 
 const MusicContainer = (props) => {
     return (
@@ -9,5 +9,4 @@ const MusicContainer = (props) => {
     )
     }
 export default compose(
-    withAuthRedirect
 )(MusicContainer);

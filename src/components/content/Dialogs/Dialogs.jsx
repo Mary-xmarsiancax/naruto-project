@@ -2,9 +2,10 @@ import React from 'react';
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import dialogLogo from "../../images/dialogsLogo.png";
+import dialogLogo from "../../../images/dialogsLogo.png";
 import Answer from "./Answers/Answer";
 import {Formik, Field, Form} from 'formik';
+import {validateAnswer, validateMessage} from "../../common/validate/validate";
 
 
 const Dialogs = (props) => {
@@ -47,12 +48,15 @@ const Dialogs = (props) => {
                     }}
                     onSubmit={onSubmitMessage}
                 >
+                    {({ errors, touched, isValidating }) => (
                     <Form>
                         <div>
-                            <Field id="message" name="message" placeholder="add message"/>
+                            <Field id="message" validate={validateMessage}  name="message" placeholder="add message"/>
+                            {errors.message && touched.message && <div className={s.divError}>{errors.message}</div>}
                             <button type="submit">Add message</button>
                         </div>
                     </Form>
+                        )}
                 </Formik>
 
             </div>
@@ -64,12 +68,15 @@ const Dialogs = (props) => {
                     }}
                     onSubmit={onSubmitAnswer}
                 >
+                    {({ errors, touched, isValidating }) => (
                     <Form>
                         <div>
-                            <Field id="answer" name="answer" placeholder="add answer"/>
+                            <Field id="answer" validate={validateAnswer}  name="answer" placeholder="add answer"/>
+                            {errors.answer && touched.answer && <div className={s.divError}>{errors.answer}</div>}
                             <button type="submit">Add message</button>
                         </div>
                     </Form>
+                        )}
                 </Formik>
             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Friend.module.css";
-import orangeCircule from "../../../images/orangeCircle копия.png"
+import orangeCircule from "../../../../images/orangeCircle копия.png"
 
 const Friend = (props) => {
     return (

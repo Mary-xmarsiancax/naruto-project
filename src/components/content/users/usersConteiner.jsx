@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
 import {
     follow, getUsers, setUsersCount, toggleFollowingProgress, unfollow,
-} from "../redux/users-reducer";
+} from "../../redux/users-reducer";
 import React from "react";
 import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
-import withAuthRedirect from "../hoc/withAuthRedirect";
+import Preloader from "../../common/Preloader/Preloader";
+import withAuthRedirect from "../../common/hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
@@ -56,5 +56,4 @@ export default compose(
         toggleFollowingProgress,
         getUsers
     }),
-    withAuthRedirect
 )(UsersContainer);

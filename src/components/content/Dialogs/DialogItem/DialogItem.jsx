@@ -1,11 +1,11 @@
 import s from "./DialogItem.module.css";
 import {NavLink} from "react-router-dom";
 import React from "react";
-import maxAva from "../../../images/maxAva.png";
-import sergAva from "../../../images/sergAva.png";
-import anyaAva from "../../../images/anyaAva.jpg";
-import ninaAva from "../../../images/ninaAva.jpg";
-import fredAva from "../../../images/fredAva.jpg";
+import maxAva from "../../../../images/maxAva.png";
+import sergAva from "../../../../images/sergAva.png";
+import anyaAva from "../../../../images/anyaAva.jpg";
+import ninaAva from "../../../../images/ninaAva.jpg";
+import fredAva from "../../../../images/fredAva.jpg";
 
 const images = {
     maxAva: maxAva,

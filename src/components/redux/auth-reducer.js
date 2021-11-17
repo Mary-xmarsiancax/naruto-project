@@ -19,8 +19,7 @@ const authReducer = (state = initialState, action) => {
         case SET_AUTH_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.data
             }
 
         default:
@@ -55,14 +54,8 @@ export const login = (body) => {
 export const logout = () => {
     return (dispatch) => {
         authMeAPI.logout()
-            // .then(data => {
-            //     if (data.resultCode === 0) {
-            //         dispatch(setAuthUserData(null, null, null, false));
-            //     }
-            // })
             .then(data => {
-                if (data.resultCode === 0) {
-                    let {id, email, login} = data.data;
+                if (data.data.resultCode === 0) {
                     dispatch(setAuthUserData(null, null, null, false));
                 }
             })

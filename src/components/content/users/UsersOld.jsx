@@ -1,5 +1,5 @@
 import React from 'react';
-import emptyAvatar from "../../images/imgForUsesrs.jpg"
+import emptyAvatar from "../../../images/imgForUsesrs.jpg"
 import s from "./Users.module.css";
 import * as axios from "axios";
 
