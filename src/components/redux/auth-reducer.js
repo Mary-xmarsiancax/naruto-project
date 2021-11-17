@@ -37,6 +37,17 @@ export const authMe = () => {
             })
     }
 }
+
+export const getAuthUserData = () => (dispatch) => {
+        return authMeAPI.auth()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data;
+                    dispatch(setAuthUserData(id, email, login, true));
+                }
+            })
+    }
+
 export const login = (body) => {
     return (dispatch) => {
         authMeAPI.login(body)

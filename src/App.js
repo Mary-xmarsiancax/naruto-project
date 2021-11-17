@@ -3,20 +3,23 @@ import './App.css';
 import NavBar from "./components/NavBar/NavBar";
 import ContentContainer from "./components/content/ContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {setAuthUserData} from "./components/redux/auth-reducer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
-
+import {initializeApp} from "./components/redux/app-reducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.setAuthUserData()
+        this.props.initializeApp()
     }
 
     render() {
-        return (
+        if (!this.props.initialized){
+            return <Preloader/>
+        }           
+           return (
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <NavBar/>
@@ -25,8 +28,14 @@ class App extends React.Component {
         )
     }
 }
+
+let mapStateToProps = (state) => {
+    return {
+        initialized: state.app.initialized
+    }
+}
 export default compose(
     withRouter,
-    connect(null, {setAuthUserData})
+    connect(mapStateToProps, {initializeApp})
 )(App)
 

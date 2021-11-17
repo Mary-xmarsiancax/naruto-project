@@ -5,7 +5,6 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
-import withAuthRedirect from "../../common/hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
