@@ -1,4 +1,4 @@
-import {authMeAPI, toLoginAPI} from "../../api/api";
+import {authMeAPI} from "../../api/api";
 
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
 
