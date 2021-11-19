@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {addMessageActionCreator} from "../../redux/messages-reducer";
 import {addAnswerActionCreator} from "../../redux/answers-reducer";
 import React from "react";
-import withAuthRedirect from "../../common/hoc/withAuthRedirect";
+import withAuthRedirect from "../../common/hocRedirect/withAuthRedirect";
 import {compose} from "redux";
 
 
