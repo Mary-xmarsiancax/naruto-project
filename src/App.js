@@ -8,6 +8,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {initializeApp} from "./components/redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import ProfileContainer from "./components/content/Profile/ProfileContainer";
 
 
 class App extends React.Component {
@@ -23,7 +24,7 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <NavBar/>
-                <ContentContainer/>
+                {this.props.isAuth ? <ProfileContainer/> : <ContentContainer/>}
             </div>
         )
     }
@@ -31,7 +32,8 @@ class App extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        isAuth: state.auth.isAuth
     }
 }
 export default compose(

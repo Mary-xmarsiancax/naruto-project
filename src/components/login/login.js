@@ -17,7 +17,6 @@ const Login = (props) => {
                history.push(`profile/` + userId)
                 console.log(props);
             }
-            // response.userId ? withProfileRedirect(response.userId) : withProfileRedirect( "19081")
         })
     }
 
