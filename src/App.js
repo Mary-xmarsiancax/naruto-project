@@ -8,7 +8,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {initializeApp} from "./components/redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import ProfileContainer from "./components/content/Profile/ProfileContainer";
+
 
 
 class App extends React.Component {
