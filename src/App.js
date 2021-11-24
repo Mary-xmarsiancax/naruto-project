@@ -24,7 +24,7 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <NavBar/>
-                {this.props.isAuth ? <ProfileContainer/> : <ContentContainer/>}
+                <ContentContainer isAuth={this.props.isAuth}/>
             </div>
         )
     }

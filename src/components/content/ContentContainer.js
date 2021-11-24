@@ -10,7 +10,7 @@ import LoginContainer from "../login/loginContainer";
 const ContentContainer = () => {
    return (
     <div className="app-wrapper-content">
-        <Route path="/login" render={() => <LoginContainer/>}/>
+        <Route path="/login" render={() =>  <LoginContainer/>}/>
         <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
         <Route path="/dialogs" render={() => <DialogsContainer/>}/>
         <Route path="/news" render={() => <NewsContainer/>}/>
