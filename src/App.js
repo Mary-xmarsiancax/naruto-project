@@ -9,8 +9,6 @@ import {compose} from "redux";
 import {initializeApp} from "./components/redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
-
-
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
