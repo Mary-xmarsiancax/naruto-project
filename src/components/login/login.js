@@ -38,12 +38,12 @@ const Login = (props) => {
                 <Form>
                     <div>
                         <label htmlFor="email">Login</label>
-                        <Field id="email" validate={validateEmail} name="email" placeholder="neo@mail.ru"/>
+                        <Field id="email" validate={validateEmail} name="email" placeholder="xmarsiancax@mail.ru"/>
                         {errors.email && touched.email && <div className={s.divError}>{errors.email}</div>}
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <Field id="password" validate={validatePassword} name="password" placeholder="***********"/>
+                        <Field id="password" validate={validatePassword} name="password" placeholder="timofey13"/>
                         {errors.password && touched.password && <div className={s.divError}>{errors.password}</div>}
                     </div>
                     <div>
