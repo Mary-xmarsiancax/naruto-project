@@ -11,7 +11,7 @@ import LoginContainer from "../login/loginContainer";
 const ContentContainer = (props) => {
     return (
         <div className="app-wrapper-content">
-            <Route path='/' exact={true} render={() => <Redirect to={"/profile"}/>} />
+            <Route path='/' exact={true} render={() => <Redirect to={"/current"}/>} />
             <Route path="/login" render={() => <LoginContainer/>}/>
             <Route path="/current" render={() => <ProfileContainer/>}/>
             <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
