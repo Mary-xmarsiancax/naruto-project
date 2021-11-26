@@ -26,7 +26,7 @@ let Users = (props) => {
             {props.users.map(el =>
                 <div key={el.id} className={s.usersWrap}>
                     <div className={s.leftColumn}>
-                        <NavLink to={"/profile/" + el.id}><img className={s.leftColumnImg}
+                        <NavLink to={"/profileUser/" + el.id}><img className={s.leftColumnImg}
                                                                src={el.photos.small != null ? el.photos.small : emptyAvatar}
                                                                alt="NarutoImg"/>
                         </NavLink>
