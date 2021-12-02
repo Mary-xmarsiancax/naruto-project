@@ -30,6 +30,7 @@ const MyPosts = (props) => {
                             <Field id="post" name="post" validate={validatePost} placeholder="add post"/>
                             {errors.post && touched.post && <div className={s.divError}>{errors.post}</div>}
                             <button type="submit">Add post</button>
+                            <button type="submit">Delete post</button>
                         </div>
                     </Form>
                     )}
