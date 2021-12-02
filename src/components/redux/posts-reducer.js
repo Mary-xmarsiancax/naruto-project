@@ -45,32 +45,21 @@ const postReducer = (state = initialState, action) => {
     }
 }
 
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        getProfileAPI.getProfile(userId)
-            .then(data => {
+export const getProfile = (userId) => async (dispatch) => {
+        let data = await getProfileAPI.getProfile(userId)
                 dispatch(setUsersProfile(data));
-            })
     }
-}
-export const getUsersStatus = (userId) => {
-    return (dispatch) => {
-        getUsersStatusAPI.getStatus(userId)
-            .then(data => {
+
+export const getUsersStatus = (userId) => async (dispatch) => {
+        let data = await getUsersStatusAPI.getStatus(userId)
                 dispatch(setUsersStatus(data));
-            })
     }
-}
-export const updateUsersStatus = (status) => {
-    return (dispatch) => {
-        updateUsersStatusAPI.updateStatus(status)
-            .then(data => {
+
+export const updateUsersStatus = (status) => async (dispatch) => {
+        let data = await updateUsersStatusAPI.updateStatus(status)
                 if (data.resultCode === 0) {
                     dispatch(setUsersStatus(status));
                 }
-
-            })
     }
-}
 
 export default postReducer;
