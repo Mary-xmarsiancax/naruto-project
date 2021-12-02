@@ -85,36 +85,32 @@ const usersReducer = (state = initialState, action) => {
 
 export const getUsers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    usersAPI.getUsers(currentPage, pageSize)
-    let data = await dispatch(toggleIsFetching(false));
+    let data = await usersAPI.getUsers(currentPage, pageSize)
+     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     if (data.totalCount <= 96) {
         dispatch(setUsersCount(data.totalCount))
     }
     dispatch(setUsersCount(180))
 }
-
+const followUnfollowFlow = async (dispatch, userId, APIMethod, actionCreator) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        let data = await APIMethod(userId)
+        if (data.resultCode == 0) {
+            dispatch(actionCreator(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+    }
 export const follow = (userId) => {
     return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        let data = await followAPI.followToFriend(userId)
-                if (data.resultCode == 0) {
-                    dispatch(followSucces(userId));
-                }
-                dispatch(toggleFollowingProgress(false, userId));
+        followUnfollowFlow(userId, followAPI.followToFriend.bind(followAPI), followSucces)
     }
 }
 
 export const unfollow = (userId) => {
     return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-
-        let data = await followAPI.unFollowToFriend(userId)
-                if (data.resultCode == 0) {
-                    dispatch(unfollowSucces(userId));
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-               }
+        followUnfollowFlow(userId, followAPI.unFollowToFriend.bind(followAPI), unfollowSucces)
+    }
 }
 
 
