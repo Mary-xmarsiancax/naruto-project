@@ -1,21 +1,24 @@
 import {Formik, Field, Form} from 'formik';
 import {validateEmail, validatePassword} from "../common/validate/validate";
 import s from "../content/Profile/MyPosts/MyPosts.module.css";
-import React from "react";
-import { useHistory } from 'react-router-dom';
+import React, {useEffect} from "react";
+import {useHistory} from 'react-router-dom';
 
 
 const Login = (props) => {
-    const history = useHistory();
 
+    const history = useHistory();
+    // useEffect(() => {
+    //     if (props.messages.length) {
+    //         console.log(props.messages);
+    //     }
+    // })
     const onSubmit = (formData) => {
         let promise = props.login(formData);
 
         promise.then((userId) => {
-            console.log(userId);
-            if (userId){
-               history.push(`profile/` + userId)
-                console.log(props);
+            if (userId) {
+                history.push(`profile/` + userId)
             }
         })
     }
@@ -29,6 +32,7 @@ const Login = (props) => {
                     password: "",
                     rememberMe: false,
                     captcha: false
+
 
                 }
             }
@@ -52,6 +56,7 @@ const Login = (props) => {
                     </div>
                     <div>
                         <button type="submit">Login</button>
+                        {props.messages.length ? <div className={s.messagesErrElShow}>{props.messages}</div> : null}
                     </div>
                 </Form>
             )}

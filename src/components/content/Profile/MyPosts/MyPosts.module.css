@@ -9,3 +9,11 @@
 .divError {
    color : snow;
 }
+.messagesErrElShow{
+    border: black solid 3px;
+    font-family: monospace;
+    width: max-content;
+    padding: 1em;
+    margin: 1em;
+    font-weight: bold;
+}
