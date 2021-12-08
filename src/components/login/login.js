@@ -1,20 +1,15 @@
 import {Formik, Field, Form} from 'formik';
 import {validateEmail, validatePassword} from "../common/validate/validate";
 import s from "../content/Profile/MyPosts/MyPosts.module.css";
-import React, {useEffect} from "react";
+import React from "react";
 import {useHistory} from 'react-router-dom';
 
 
-const Login = (props) => {
+const Login = ({login, messages}) => {
 
     const history = useHistory();
-    // useEffect(() => {
-    //     if (props.messages.length) {
-    //         console.log(props.messages);
-    //     }
-    // })
     const onSubmit = (formData) => {
-        let promise = props.login(formData);
+        let promise = login(formData);
 
         promise.then((userId) => {
             if (userId) {
@@ -56,7 +51,7 @@ const Login = (props) => {
                     </div>
                     <div>
                         <button type="submit">Login</button>
-                        {props.messages.length ? <div className={s.messagesErrElShow}>{props.messages}</div> : null}
+                        {messages.length ? <div className={s.messagesErrElShow}>{messages}</div> : null}
                     </div>
                 </Form>
             )}
