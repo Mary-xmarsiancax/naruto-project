@@ -1,4 +1,5 @@
 import {followAPI, usersAPI} from "../../api/api";
+import {updateObjectInArray} from "../common/utils/object-hellper";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -30,24 +31,26 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true};
-                    }
-                    return u;
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: true})
+                //     state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return {...u, followed: true};
+                //     }
+                //     return u;
+                // })
             }
 
 
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false};
-                    }
-                    return u;
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: false})
+                //     state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return {...u, followed: false};
+                //     }
+                //     return u;
+                // })
             }
 
         case SET_USERS:
@@ -86,7 +89,7 @@ const usersReducer = (state = initialState, action) => {
 export const getUsers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     let data = await usersAPI.getUsers(currentPage, pageSize)
-     dispatch(toggleIsFetching(false));
+    dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     if (data.totalCount <= 96) {
         dispatch(setUsersCount(data.totalCount))
@@ -94,13 +97,13 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(setUsersCount(180))
 }
 const followUnfollowFlow = async (dispatch, userId, APIMethod, actionCreator) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        let data = await APIMethod(userId)
-        if (data.resultCode == 0) {
-            dispatch(actionCreator(userId));
-        }
-        dispatch(toggleFollowingProgress(false, userId));
+    dispatch(toggleFollowingProgress(true, userId));
+    let data = await APIMethod(userId)
+    if (data.resultCode == 0) {
+        dispatch(actionCreator(userId));
     }
+    dispatch(toggleFollowingProgress(false, userId));
+}
 export const follow = (userId) => {
     return async (dispatch) => {
         followUnfollowFlow(userId, followAPI.followToFriend.bind(followAPI), followSucces)

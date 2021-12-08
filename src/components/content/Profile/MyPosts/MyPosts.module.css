@@ -7,13 +7,19 @@
 }
 
 .divError {
-   color : snow;
+   /*color : snow;*/
+    border: black solid 3px;
+    font-family: monospace;
+    width: max-content;
+    padding: 0.5em;
+    margin: 1em;
+    font-weight: bold;
 }
 .messagesErrElShow{
     border: black solid 3px;
     font-family: monospace;
     width: max-content;
-    padding: 1em;
+    padding: 0.5em;
     margin: 1em;
     font-weight: bold;
 }
