@@ -3,9 +3,11 @@ import {getProfileAPI, getUsersStatusAPI, updateUsersStatusAPI} from "../../api/
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_USERS_STATUS = "SET-USERS-STATUS";
-export const addPostActionCreator = (formData) => ({type: ADD_POST,formData:formData});
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+export const addPostActionCreator = (formData) => ({type: ADD_POST, formData: formData});
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 
 let initialState = {
     newPostData: [
@@ -40,26 +42,38 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            }
         default:
             return state;
     }
 }
 
 export const getProfile = (userId) => async (dispatch) => {
-        let data = await getProfileAPI.getProfile(userId)
-                dispatch(setUsersProfile(data));
+    let data = await getProfileAPI.getProfile(userId)
+    dispatch(setUsersProfile(data));
+}
+export const savePhotos = (filePhotos) => async (dispatch) => {
+    let data = await getProfileAPI.savePhotos(filePhotos)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos));
     }
+}
 
 export const getUsersStatus = (userId) => async (dispatch) => {
-        let data = await getUsersStatusAPI.getStatus(userId)
-                dispatch(setUsersStatus(data));
-    }
+    let data = await getUsersStatusAPI.getStatus(userId)
+    dispatch(setUsersStatus(data));
+}
 
 export const updateUsersStatus = (status) => async (dispatch) => {
-        let data = await updateUsersStatusAPI.updateStatus(status)
-                if (data.resultCode === 0) {
-                    dispatch(setUsersStatus(status));
-                }
+    let data = await updateUsersStatusAPI.updateStatus(status)
+    if (data.resultCode === 0) {
+        dispatch(setUsersStatus(status));
     }
+}
+
 
 export default postReducer;

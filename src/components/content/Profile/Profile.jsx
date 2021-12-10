@@ -6,7 +6,7 @@ import ProfileStatusWhisHooks from "./ProfileStatusWhisHooks";
 
 const Profile = (props) => {
     return <div className={s.content}>
-        <ProfileInfo profile={props.profile} />
+        <ProfileInfo profile={props.profile} isOwner = {props.isOwner} savePhotos={props.savePhotos}/>
         <ProfileStatusWhisHooks status={props.status} updateUsersStatus={props.updateUsersStatus}/>
         <MyPostsContainer/>
     </div>

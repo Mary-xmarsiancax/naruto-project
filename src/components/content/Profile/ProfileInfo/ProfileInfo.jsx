@@ -4,6 +4,11 @@ import Preloader from "../../../common/Preloader/Preloader";
 import altAvaProfile from "../../../../images/altAvaProfile.jpg"
 
 const ProfileInfo = (props) => {
+    const onMainPhotosSelected = (e) => {
+        if (e.target.files.length){
+            props.savePhotos(e.target.files[0])
+        }
+    }
     if (!props.profile) {
         return <Preloader/>
     }
@@ -14,8 +19,10 @@ const ProfileInfo = (props) => {
                      alt="narutoAndThisFriends"/>
             </div>
             <div className={s.avaDescription}>
-                <img src={props.profile.photos.large != null ? props.profile.photos.large : altAvaProfile} alt="avaLarge"/>
-                <div><input type="file"/></div>
+                <img src={props.profile.photos.large != null ? props.profile.photos.large : altAvaProfile}
+                     alt="avaLarge"/>
+                {props.isOwner &&
+                <div className={s.addedAvaImgInput}><input onChange={onMainPhotosSelected} type="file"/></div>}
                 <div>
                     Имя: {props.profile.fullName}
                 </div>
