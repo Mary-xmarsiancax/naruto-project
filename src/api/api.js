@@ -25,17 +25,6 @@ export const usersAPI =  {
     }
 }
 
-// export const followAPI = {
-//     followToFriend(elId) {
-//         return instance.post(`follow/${elId}`, {},)
-//             .then(response => response.data);
-//     },
-//     unFollowToFriend(elId) {
-//         return instance.delete(`follow/${elId}`)
-//             .then(response => response.data);
-//     },
-//
-// }
 
 export const getProfileAPI = {
     getProfile(userId) {

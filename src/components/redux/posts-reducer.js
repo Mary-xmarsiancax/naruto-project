@@ -1,10 +1,12 @@
 import {getProfileAPI, getUsersStatusAPI, updateUsersStatusAPI} from "../../api/api";
 
 const ADD_POST = "ADD-POST";
+const DELETE_POST = "DELETE-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_USERS_STATUS = "SET-USERS-STATUS";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 export const addPostActionCreator = (formData) => ({type: ADD_POST, formData: formData});
+export const deletePostActionCreator = (id) => ({type: DELETE_POST, id: id});
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
@@ -30,6 +32,14 @@ const postReducer = (state = initialState, action) => {
                     likesCount: 55
                 }],
                 newPostText: " "
+            }
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                newPostData: state.newPostData.filter( (obj) => {
+                    return obj.id !== action.id
+                })
             }
         }
         case SET_USER_PROFILE:
