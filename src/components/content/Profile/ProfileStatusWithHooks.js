@@ -38,7 +38,7 @@ const ProfileStatus = (props) => {
                     </Form>
                 </Formik>
                 : <div className={s.usersStatus}
-                       onDoubleClick={activateEditMode}>{props.status || "no status yet"}</div>}
+                       onDoubleClick={props.isOwner?activateEditMode:null}>{props.status || "no status yet"}</div>}
         </div>
     )
 }
