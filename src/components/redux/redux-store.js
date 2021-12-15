@@ -8,6 +8,7 @@ import usersReducer from "./users-reducer";
 import authReducer, {authMe, login} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 import AppReducer from "./app-reducer";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 let reducers = combineReducers({
     profilePage: postReducer,
@@ -21,8 +22,7 @@ let reducers = combineReducers({
 
 });
 
-
-let store = createStore(reducers,applyMiddleware(thunkMiddleware));
+let store = createStore(reducers,composeWithDevTools(applyMiddleware(thunkMiddleware)));
 window.store=store;
 store.dispatch(authMe());
 

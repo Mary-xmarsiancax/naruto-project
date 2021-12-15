@@ -21,23 +21,26 @@ let initialState = {
     profile: null,
     status: ""
 };
+
 const postReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
+
+            const newPost = {
+                id: state.newPostData.length ? (state.newPostData[state.newPostData.length - 1].id + 1) : 1,
+                message: action.formData.post,
+                likesCount: 55
+            }
             return {
                 ...state,
-                newPostData: [...state.newPostData, {
-                    id: state.newPostData.length + 1,
-                    message: action.formData.post,
-                    likesCount: 55
-                }],
+                newPostData: [...state.newPostData,newPost],
                 newPostText: " "
             }
         }
         case DELETE_POST: {
             return {
                 ...state,
-                newPostData: state.newPostData.filter( (obj) => {
+                newPostData: state.newPostData.filter((obj) => {
                     return obj.id !== action.id
                 })
             }

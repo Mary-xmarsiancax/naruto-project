@@ -8,11 +8,11 @@ import {validatePost} from "../../../common/validate/validate";
 const MyPosts = (props) => {
     const [selectedId, setSelectedId] = useState(undefined)
     let myPostsElements = props.newPostData.map
-    (p => <div  className={selectedId===p.id?s.selectedPostStyle:""} onClick={() => {
+    (p => <div key={p.id} className={selectedId===p.id?s.selectedPostStyle:""} onClick={() => {
 
             onSelectedPost(p.id)
         }}>
-            <Post key={p.id} message={p.message} likesCounte={p.likesCounte}/>
+            <Post message={p.message} likesCounte={p.likesCounte}/>
         </div>
     );
 
