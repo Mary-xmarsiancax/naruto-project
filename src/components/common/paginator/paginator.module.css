@@ -6,10 +6,21 @@
     font-size: 1em;
     cursor: pointer;
     transition: all .2s;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .pageNumber span:hover {
     color: green;
-    font-size:2em;
+    font-size:1.5em;
+}
+.pageNumberButtonPrev{
+    float: left;
+    padding: 2px;
+    argin: auto;
+}
+
+.pageNumberButtonNext{
+    float: right;
+    padding: 2px;
+    margin: auto;
 }

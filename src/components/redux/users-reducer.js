@@ -79,10 +79,10 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
     let data = await usersAPI.getUsers(currentPage, pageSize)
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
-    if (data.totalCount <= 96) {
+    //if (data.totalCount <= 96) {
         dispatch(setUsersCount(data.totalCount))
-    }
-    dispatch(setUsersCount(180))
+    //}
+    //dispatch(setUsersCount(300))
 }
 const followUnfollowFlow = async (dispatch, userId, APIMethod, actionCreator) => {
     dispatch(toggleFollowingProgress(true, userId));
