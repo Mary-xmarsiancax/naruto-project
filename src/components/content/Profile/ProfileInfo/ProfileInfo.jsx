@@ -5,7 +5,7 @@ import altAvaProfile from "../../../../images/altAvaProfile.jpg"
 
 const ProfileInfo = (props) => {
     const onMainPhotosSelected = (e) => {
-        if (e.target.files.length){
+        if (e.target.files.length) {
             props.savePhotos(e.target.files[0])
         }
     }
@@ -23,18 +23,23 @@ const ProfileInfo = (props) => {
                      alt="avaLarge"/>
                 {props.isOwner &&
                 <div className={s.addedAvaImgInput}><input onChange={onMainPhotosSelected} type="file"/></div>}
-                <div>
-                    Имя: {props.profile.fullName}
-                </div>
-                <div>
-                    О себе: {props.profile.aboutMe}
-                </div>
-                <div>
-                    Отношение к работе: {props.profile.lookingForAJobDescription}
-                </div>
-
+                    <p> Имя: {props.profile.fullName}</p>
+                    <p> О себе: {props.profile.aboutMe}</p>
+                    <p>Нахожусь в поиске работы: {props.profile.lookingForAJob ? "да" : "нет"}</p>
+                    <p>Отношение к работе: {props.profile.lookingForAJobDescription}</p>
+                    <div>
+                        Контакты:{Object.keys(props.profile.contacts).map(key=>
+                        <Contacts contactItem={key} contactValue={props.profile.contacts[key]}/>
+                    )}
+                    </div>
             </div>
         </div>
     )
+}
+const Contacts = (props) => {
+    return <p>
+        {props.contactItem}:{props.contactValue}
+    </p>
+
 }
 export default ProfileInfo;
