@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {Field, Form, Formik} from "formik";
-import {validatePost} from "../../../common/validate/validate";
+
 
 
 const MyPosts = (props) => {
     const [selectedId, setSelectedId] = useState(undefined)
     let myPostsElements = props.newPostData.map
-    (p => <div key={p.id} className={selectedId===p.id?s.selectedPostStyle:""} onClick={() => {
+    (p =>  <div key={p.id} className={props.isOwner && selectedId===p.id?s.selectedPostStyle:""} onClick={() => {
 
             onSelectedPost(p.id)
         }}>
