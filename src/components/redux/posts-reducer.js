@@ -33,7 +33,7 @@ const postReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                newPostData: [...state.newPostData,newPost],
+                newPostData: [...state.newPostData, newPost],
                 newPostText: " "
             }
         }
@@ -60,6 +60,7 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos}
             }
+
         default:
             return state;
     }
@@ -85,6 +86,15 @@ export const updateUsersStatus = (status) => async (dispatch) => {
     let data = await updateUsersStatusAPI.updateStatus(status)
     if (data.resultCode === 0) {
         dispatch(setUsersStatus(status));
+    }
+}
+export const setProfileFormData = (formData) => async (dispatch) => {
+    console.log("я попадаю в санку")
+    let data = await getProfileAPI.setProfileFormData(formData)
+    if (data.resultCode === 0) {
+        console.log("Данные на сервак ушли из формы")
+    }else {
+        console.log("запрос вернулся с ошибкой:" + data.messages)
     }
 }
 

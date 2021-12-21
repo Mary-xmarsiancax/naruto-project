@@ -3,8 +3,8 @@ import {Formik, Field, Form} from 'formik';
 
 
 const ProfileDataForm = (props) => {
-    const onSubmit=(dataForm)=>{
-        console.log(dataForm);
+    const onSubmit = (dataForm) => {
+        props.setProfileFormData(dataForm)
     }
 
     const [contacts, setContacts] = useState(null);
@@ -14,20 +14,21 @@ const ProfileDataForm = (props) => {
             acc[key] = "";
             return acc;
         }, {});
-
         setContacts(initialState)
     }, []);
+    const exitToEditMode = () => {
 
-    //{Object.keys(props.profile.contacts).map(key =>initialValues[key]:"")}//как это привести к нормальному виду
-    return <div>
+    }
+
+    return <div onBlur={exitToEditMode}>
         {contacts ? <Formik
             initialValues={
                 {
-                    fullName: "",
-                    aboutMe: "",
+                    fullName: "Mary",
+                    aboutMe: "norm",
                     lookingForAJob: false,
-                    lookingForAJobDescription: "",
-                    ...contacts
+                    lookingForAJobDescription: "lalalalla",
+                    contacts: contacts
                 }
             }
 
@@ -35,35 +36,46 @@ const ProfileDataForm = (props) => {
         >
             <Form>
                 <div>
-                    <label htmlFor="fullName"><div>Имя</div></label>
-                    <Field id="fullName"  name="fullName" placeholder="Harry Potter"/>
+                    <label htmlFor="fullName">
+                        <div>Имя</div>
+                    </label>
+                    <Field id="fullName" name="fullName" placeholder="Harry Potter" />
                 </div>
                 <div>
-                    <label htmlFor="aboutMe"><div>О себе</div></label>
-                    <Field id="aboutMe"  name="aboutMe" placeholder="to learn a magic"/>
+                    <label htmlFor="aboutMe">
+                        <div>О себе</div>
+                    </label>
+                    <Field id="aboutMe" name="aboutMe" placeholder="to learn a magic"/>
                 </div>
                 <div>
-                    <label htmlFor="lookingForAJob"><div>Нахожусь в поиске работы</div></label>
-                    <Field id="lookingForAJob"  name="lookingForAJob" type="checkbox"/>
+                    <label htmlFor="lookingForAJob">
+                        <div>Нахожусь в поиске работы</div>
+                    </label>
+                    <Field id="lookingForAJob" name="lookingForAJob" type="checkbox"/>
                 </div>
                 <div>
-                    <label htmlFor="lookingForAJobDescription"><div>Отношение к работе</div></label>
-                    <Field id="lookingForAJobDescription"  name="lookingForAJobDescription" placeholder=""/>
+                    <label htmlFor="lookingForAJobDescription">
+                        <div>Отношение к работе</div>
+                    </label>
+                    <Field id="lookingForAJobDescription" name="lookingForAJobDescription" placeholder=""/>
                 </div>
                 <div>
                     Контакты:{Object.keys(contacts).map(key =>
-                    <Contacts key={key} contactItem={key} contactValue={contacts[key]}/>
+                    <Contacts key={key} contactItem={key} contactValue={contacts[key]? contacts[key] : "I don't know"}
+                    />
                 )}
                 </div>
-                <button type="submit">submitForm</button>
+                <button type="submit">save Form</button>
             </Form>
         </Formik> : undefined}
     </div>
 }
- const Contacts = (props) => {
-    return  <div>
-        <label htmlFor= {props.contactItem}><div>{props.contactItem}</div></label>
-        <Field id= {props.contactItem}  name= {props.contactItem} placeholder=""/>
+const Contacts = (props) => {
+    return <div>
+        <label htmlFor={props.contactItem}>
+            <div>{props.contactItem}</div>
+        </label>
+        <Field id={props.contactItem} name={"contacts." + props.contactItem} placeholder={props.contactValue}/>
     </div>
 }
 export default ProfileDataForm;

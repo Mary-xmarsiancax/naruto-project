@@ -33,8 +33,8 @@ let User = ({user, ...props}) => {
                             <div>{user.status}</div>
                         </div>
                         <div className={s.countryName}>
-                            <div>"user.location.country"</div>
-                            <div>"user.location.cityName"</div>
+                            <div>моя страна:</div>
+                            <div>мой город:</div>
                             <div></div>
                         </div>
                     </div>

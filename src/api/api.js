@@ -39,6 +39,10 @@ export const getProfileAPI = {
             }
         })
         .then(response => response.data);
+    },
+    setProfileFormData(formData){
+            return instance.put(`profile/`,formData)
+                .then(response => response.data);
     }
 }
 export const getUsersStatusAPI = {
