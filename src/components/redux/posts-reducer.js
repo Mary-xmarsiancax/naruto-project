@@ -92,9 +92,9 @@ export const setProfileFormData = (formData) => async (dispatch) => {
     console.log("я попадаю в санку")
     let data = await getProfileAPI.setProfileFormData(formData)
     if (data.resultCode === 0) {
-        console.log("Данные на сервак ушли из формы")
-    }else {
-        console.log("запрос вернулся с ошибкой:" + data.messages)
+        console.log("данные ушли на сервак")
+    dispatch(getProfile(19081))
+        console.log("запрашиваю профайл с новыми данными")
     }
 }
 

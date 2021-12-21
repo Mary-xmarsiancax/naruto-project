@@ -3,12 +3,15 @@ import s from "./Profile.module.css";
 import Preloader from "../../../common/Preloader/Preloader";
 import altAvaProfile from "../../../../images/altAvaProfile.jpg"
 import ProfileDataForm from "./ProfileDataForm";
-import {setProfileFormData} from "../../../redux/posts-reducer";
+
 
 const ProfileInfo = (props) => {
     const [editMode, setEditMode] = useState(false)
     const onGoToEditForm = () => {
         setEditMode(true)
+    }
+    const ExitToEditForm = () => {
+        setEditMode(false)
     }
     const onMainPhotosSelected = (e) => {
         if (e.target.files.length) {
@@ -29,10 +32,10 @@ const ProfileInfo = (props) => {
                      alt="avaLarge"/>
                 {props.isOwner &&
                 <div className={s.addedAvaImgInput}><input onChange={onMainPhotosSelected} type="file"/></div>}
-                {editMode ? <ProfileDataForm  profile={props.profile} setProfileFormData={props.setProfileFormData}/>
+                {editMode ? <ProfileDataForm profile={props.profile} ExitToEditForm={ExitToEditForm} setProfileFormData={props.setProfileFormData}/>
                     : <ProfileData profile={props.profile}/>}
             </div>
-            {!editMode ?<button onClick={onGoToEditForm}>goToEditModeForm</button> : null}
+            {!editMode ? <button onClick={onGoToEditForm}>goToEditModeForm</button> : null}
         </div>
     )
 }
@@ -54,5 +57,4 @@ const ProfileData = (props) => {
         </div>
     </div>
 }
-
 export default ProfileInfo;

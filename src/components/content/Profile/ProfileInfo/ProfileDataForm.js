@@ -5,6 +5,7 @@ import {Formik, Field, Form} from 'formik';
 const ProfileDataForm = (props) => {
     const onSubmit = (dataForm) => {
         props.setProfileFormData(dataForm)
+       props.ExitToEditForm()
     }
 
     const [contacts, setContacts] = useState(null);
@@ -16,11 +17,9 @@ const ProfileDataForm = (props) => {
         }, {});
         setContacts(initialState)
     }, []);
-    const exitToEditMode = () => {
 
-    }
 
-    return <div onBlur={exitToEditMode}>
+    return <div>
         {contacts ? <Formik
             initialValues={
                 {
