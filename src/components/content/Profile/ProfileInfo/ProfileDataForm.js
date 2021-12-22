@@ -3,34 +3,34 @@ import {Formik, Field, Form} from 'formik';
 
 
 const ProfileDataForm = (props) => {
+    const {fullName,aboutMe,lookingForAJob,lookingForAJobDescription,contacts}=props.profile
+
     const onSubmit = (dataForm) => {
         props.setProfileFormData(dataForm)
        props.ExitToEditForm()
     }
 
-    const [contacts, setContacts] = useState(null);
+    const [contactsList, setContactsList] = useState(null);
 
     useEffect(() => {
         const initialState = Object.keys(props.profile.contacts).reduce((acc, key) => {
             acc[key] = "";
             return acc;
         }, {});
-        setContacts(initialState)
+        setContactsList(initialState)
     }, []);
 
-
     return <div>
-        {contacts ? <Formik
+        {contactsList ? <Formik
             initialValues={
                 {
-                    fullName: "Mary",
-                    aboutMe: "norm",
-                    lookingForAJob: false,
-                    lookingForAJobDescription: "lalalalla",
-                    contacts: contacts
+                    fullName: fullName,
+                    aboutMe: aboutMe,
+                    lookingForAJob: lookingForAJob,
+                    lookingForAJobDescription: lookingForAJobDescription,
+                    contacts
                 }
             }
-
             onSubmit={onSubmit}
         >
             <Form>
@@ -59,8 +59,8 @@ const ProfileDataForm = (props) => {
                     <Field id="lookingForAJobDescription" name="lookingForAJobDescription" placeholder=""/>
                 </div>
                 <div>
-                    Контакты:{Object.keys(contacts).map(key =>
-                    <Contacts key={key} contactItem={key} contactValue={contacts[key]? contacts[key] : "I don't know"}
+                    Контакты:{Object.keys(contactsList).map(key =>
+                    <Contacts key={key} contactItem={key} contactValue={contactsList[key]? contactsList[key] : "I don't know"}
                     />
                 )}
                 </div>
