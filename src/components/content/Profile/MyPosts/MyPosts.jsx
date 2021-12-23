@@ -4,11 +4,10 @@ import Post from "./Post/Post";
 import {Field, Form, Formik} from "formik";
 
 
-
 const MyPosts = (props) => {
     const [selectedId, setSelectedId] = useState(undefined)
     let myPostsElements = props.newPostData.map
-    (p =>  <div key={p.id} className={props.isOwner && selectedId===p.id?s.selectedPostStyle:""} onClick={() => {
+    (p => <div key={p.id} className={props.isOwner && selectedId === p.id ? s.selectedPostStyle : ""} onClick={() => {
 
             onSelectedPost(p.id)
         }}>
@@ -20,7 +19,8 @@ const MyPosts = (props) => {
         setSelectedId(postId)
     }
 
-    const onSubmitPost = (formData) => {
+    const onSubmitPost = (formData, helper) => {
+        helper.resetForm();
         props.addPost(formData);
     }
 
@@ -34,7 +34,7 @@ const MyPosts = (props) => {
             <div>
                 <Formik
                     initialValues={{
-                        post: ""
+                        post: " "
                     }}
                     onSubmit={onSubmitPost}
                 >
@@ -42,7 +42,7 @@ const MyPosts = (props) => {
                         <Form>
                             {props.isOwner &&
                             <div>
-                                <Field id="post" name="post"  placeholder="add post"/>
+                                <Field id="post" name="post" placeholder="add post"/>
                                 {errors.post && touched.post && <div className={s.divError}>{errors.post}</div>}
                                 <button type="submit">Add post</button>
                             </div>}

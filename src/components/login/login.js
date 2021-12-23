@@ -5,17 +5,19 @@ import React from "react";
 import {useHistory} from 'react-router-dom';
 
 
-const Login = ({login, messages}) => {
+const Login = ({login, messages, captchaUrl,getCaptchaUrl}) => {
 
     const history = useHistory();
     const onSubmit = (formData) => {
         let promise = login(formData);
-
         promise.then((userId) => {
             if (userId) {
                 history.push(`profile/` + userId)
             }
         })
+    }
+    const onUpdateCaptcha = () => {
+        getCaptchaUrl()
     }
 
     return <div>
@@ -26,7 +28,7 @@ const Login = ({login, messages}) => {
                     email: "",
                     password: "",
                     rememberMe: false,
-                    captcha: false
+                    captcha: ""
 
 
                 }
@@ -49,6 +51,18 @@ const Login = ({login, messages}) => {
                         <label htmlFor="rememberMe">rememberMe</label>
                         <Field id="rememberMe" name="rememberMe" type="checkbox"/>
                     </div>
+                    {captchaUrl &&
+                    <div>
+                    <div>
+                        <label htmlFor="captcha">captcha</label>
+                        <Field id="captcha" name="captcha" placeholder="captcha text"/>
+                    </div>
+                        <img src={captchaUrl}/>
+                        <div>
+                            <button onClick={onUpdateCaptcha}>update captcha</button>
+                        </div>
+                    </div>
+                    }
                     <div>
                         <button type="submit">Login</button>
                         {messages.length ? <div className={s.messagesErrElShow}>{messages}</div> : null}

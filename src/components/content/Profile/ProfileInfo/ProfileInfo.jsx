@@ -35,7 +35,7 @@ const ProfileInfo = (props) => {
                 {editMode ? <ProfileDataForm profile={props.profile} ExitToEditForm={ExitToEditForm} setProfileFormData={props.setProfileFormData}/>
                     : <ProfileData profile={props.profile}/>}
             </div>
-            {!editMode ? <button onClick={onGoToEditForm}>goToEditModeForm</button> : null}
+            {!editMode && props.isOwner ? <button onClick={onGoToEditForm}>goToEditModeForm</button> : null}
         </div>
     )
 }
