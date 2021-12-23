@@ -13,13 +13,13 @@
     color: green;
     font-size:1.5em;
 }
-.pageNumberButtonPrev{
+.pageNumberButtonPrevBtn{
     float: left;
     padding: 2px;
     argin: auto;
 }
 
-.pageNumberButtonNext{
+.pageNumberButtonNextBtn{
     float: right;
     padding: 2px;
     margin: auto;
