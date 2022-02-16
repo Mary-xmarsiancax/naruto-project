@@ -8,6 +8,7 @@ const Paginator = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
+    console.log(pages);
     let portionSize = 20;
     let portionCount = Math.ceil(pagesCount / portionSize)
     let [portionNumber, setPortionNumber] = useState(1)
@@ -15,11 +16,12 @@ const Paginator = (props) => {
     let rightPortionPageNumber = (portionNumber * portionSize)
 
     const onTransitionToOnePage = () => {
-        console.log("changed current page to number 1")
+       setPortionNumber(1)
     }
 
-    const onTransitionToLastPage = (lastPage) => {
-        console.log("changed current page to lastPage number")
+    const onTransitionToLastPage = (portionCount) => {
+        setPortionNumber(portionCount)
+
     }
     return (
         <div className={s.pageNumber}>
@@ -37,7 +39,7 @@ const Paginator = (props) => {
             {portionCount > portionNumber &&
             <button align="right" className={s.pageNumberButtonNextBtn}
                     onClick={() => setPortionNumber(portionNumber + 1)}>NEXT</button>}
-            <button onClick={onTransitionToLastPage}>...{props.totalUsersCount}</button>
+            <button onClick={()=>onTransitionToLastPage(portionCount)}>...{pagesCount}</button>
         </div>
     )
 }

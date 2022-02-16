@@ -11,7 +11,7 @@ const MyPosts = (props) => {
 
             onSelectedPost(p.id)
         }}>
-            <Post message={p.message} likesCounte={p.likesCounte}/>
+            <Post message={p.message} likesCount={p.likesCount}/>
         </div>
     );
 
